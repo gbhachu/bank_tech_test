@@ -1,6 +1,6 @@
 class Statement
 
-  HEADINGS = "date       ||   credit   ||   debit   ||   balance"
+  HEADINGS = "date || credit || debit || balance"
 
   def print_statement client
 

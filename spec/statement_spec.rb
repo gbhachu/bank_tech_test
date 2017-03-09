@@ -16,7 +16,7 @@ describe Statement do
   end
   describe "#format_statement" do
     it "formats the statement to 2 decimal places" do
-      transaction.credit(test_account, 60)
+      transaction.deposit(test_account, 60)
       expect(statement.format_statement(test_account)).to include [["60.00"]]
     end
   end
