@@ -13,7 +13,7 @@ DATE = Time.now.strftime("%d/%m/%Y")
   end
 
   def withdraw(client, amount)
-    client.minus_balance value
+    client.minus_balance amount
     client.transactions.push([DATE, amount,"",client.balance])
   end
 
