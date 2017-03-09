@@ -14,4 +14,16 @@ describe Bank do
       expect(@bank.balance).to eq 0
     end
   end
+
+  describe '#deposit' do
+    it 'increases the balance by the amount stated (1000)' do
+      expect{@bank.deposit(1000)}.to change{@bank.balance}.by(1000)
+    end
+    it 'does not increase the balance if 0 is deposited' do
+      expect{@bank.deposit(0)}.to change{@bank.balance}.by(0)
+    end
+    it 'does not accept accept negative numbers' do
+      expect{@bank.deposit(-1)}.to raise_error "You can not deposit a negative amount"
+    end
+  end
 end
