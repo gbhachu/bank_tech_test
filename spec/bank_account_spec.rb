@@ -45,4 +45,17 @@ describe Bank do
       expect{@bank.withdraw(-1)}.to raise_error 'You cannot withdraw a negative amount'
     end
   end
+
+  describe '#current_transaction' do
+    before(:each) do
+      @bank.deposit(500)
+    end
+    it 'creates a hash of data for current withdrawal' do
+      expect(@bank.current_transaction).to be_a Hash
+    end
+    it 'stores date, amount and balance into the hash' do
+      time = Time.now.strftime("%d/%m/%Y")
+      expect(@bank.current_transaction).to include(:date => time, :amount => 500, :balance => 500)
+    end
+  end
 end
