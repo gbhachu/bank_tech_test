@@ -26,4 +26,23 @@ describe Bank do
       expect{@bank.deposit(-1)}.to raise_error "You can not deposit a negative amount"
     end
   end
+
+  describe '#withdraw' do
+
+    before(:each) do
+      @bank.deposit(500)
+    end
+
+    it 'decreases a withdrawn amount from the balance (ex. 500)' do
+      expect{@bank.withdraw(500)}.to change{@bank.balance}.by(-500)
+    end
+
+    it 'does not decrease the balance if 0 is withdrawn' do
+      expect{@bank.withdraw(0)}.to change{@bank.balance}.by(0)
+    end
+
+    it 'does not accept accept negative numbers' do
+      expect{@bank.withdraw(-1)}.to raise_error 'You cannot withdraw a negative amount'
+    end
+  end
 end

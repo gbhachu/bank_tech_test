@@ -12,6 +12,11 @@ class Bank
      self.data(amount, 'deposit')
   end
 
+  def withdraw(amount)
+    (amount >= 0) ? (@balance -= amount) : raise('You cannot withdraw a negative amount')
+    self.data(amount, 'withdraw')
+  end
+
   def data(amount, type)
   end
 end
